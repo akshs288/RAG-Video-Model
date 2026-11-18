@@ -1,0 +1,50 @@
+{
+  "text": " Like this video and keep the high energy on the bar The thing is that your website should be available on all the devices like iPad, iPhone, Android, Surface Pro 4 Because we have to give a good experience to all the users through our website",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.0,
+      "end": 2.88,
+      "text": " Like this video and keep the high energy on the bar",
+      "tokens": [
+        50364, 1743, 341, 960, 293, 1066, 264, 1090, 2281, 322, 264, 2159, 50508
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.5939117840358189,
+      "compression_ratio": 1.4319526627218935,
+      "no_speech_prob": 0.012138733640313148
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 2.88,
+      "end": 11.0,
+      "text": " The thing is that your website should be available on all the devices like iPad, iPhone, Android, Surface Pro 4",
+      "tokens": [
+        50508, 440, 551, 307, 300, 428, 3144, 820, 312, 2435, 322, 439, 264,
+        5759, 411, 12945, 11, 7252, 11, 8853, 11, 36052, 1705, 1017, 50914
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.5939117840358189,
+      "compression_ratio": 1.4319526627218935,
+      "no_speech_prob": 0.012138733640313148
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 11.0,
+      "end": 15.0,
+      "text": " Because we have to give a good experience to all the users through our website",
+      "tokens": [
+        50914, 1436, 321, 362, 281, 976, 257, 665, 1752, 281, 439, 264, 5022,
+        807, 527, 3144, 51114
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.5939117840358189,
+      "compression_ratio": 1.4319526627218935,
+      "no_speech_prob": 0.012138733640313148
+    }
+  ],
+  "language": "hi"
+}
