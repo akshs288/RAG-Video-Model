@@ -4,19 +4,38 @@ import os
 
 model = whisper.load_model("medium")
 
+all_refine_audio = os.listdir(r"D:\All Coding files\RAG-Video-Model\Refined Audios")
 
-all_files = os.listdir(r"D:\All Coding files\RAG-Video-Model\Audios_mp3")
-
-for audio in all_files:
-    # print(audio)
-    number = audio.split("_")[0]
-    title = audio.split("_")[1][:-4]
-    print(number,title)
-
+l = []
+for audio_refine in all_refine_audio:
     transcribe_obj = model.transcribe(
-        r"D:\All Coding files\RAG-Video-Model\Audios_mp3\output.mp3",
+        f"D:\All Coding files\RAG-Video-Model\Refined Audios\{audio_refine}",
         task="translate",
     )
 
-    print(transcribe_obj)
+    l.append(transcribe_obj)
 
+with open(r"D:\All Coding files\RAG-Video-Model\ouput.json","w") as g:
+    json.dump(l,g)
+
+with open(r"D:\All Coding files\RAG-Video-Model\ouput.json") as f:
+    Chunks_data = json.load(f)
+    final_data = {}
+    count = 0
+    for chunk_index in range(len(Chunks_data)):
+        l = []
+        for i in Chunks_data[count]["segments"]:
+            # Storing this in dictionary
+            d = {}
+            d["Start"] = i["start"]
+            d["End"] = i["end"]
+            d["text"] = i["text"]
+            l.append(d)
+
+        final_data[f"Chunk {chunk_index+1}"] = l
+        
+with open("result.json","w") as g:
+    json.dump(final_data,g)
+
+
+    
