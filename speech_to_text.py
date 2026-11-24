@@ -12,7 +12,6 @@ with open(r"D:\All Coding files\RAG-Video-Model\testing.json") as g:
     transcribe_obj = json.load(g)
 
 refined_data = []
-
 for i in transcribe_obj["segments"]:
     start_obj  = i["start"]
     end_obj = i["end"]
