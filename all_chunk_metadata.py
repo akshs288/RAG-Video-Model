@@ -21,10 +21,9 @@ with open(r"D:\All Coding files\RAG-Video-Model\ouput.json","w") as g:
 with open(r"D:\All Coding files\RAG-Video-Model\ouput.json") as f:
     Chunks_data = json.load(f)
     final_data = {}
-    count = 0
     for chunk_index in range(len(Chunks_data)):
         l = []
-        for i in Chunks_data[count]["segments"]:
+        for i in Chunks_data[chunk_index]["segments"]:
             # Storing this in dictionary
             d = {}
             d["Start"] = i["start"]
@@ -34,8 +33,9 @@ with open(r"D:\All Coding files\RAG-Video-Model\ouput.json") as f:
 
         final_data[f"Chunk {chunk_index+1}"] = l
         
-with open("result.json","w") as g:
-    json.dump(final_data,g)
-
+list_of_vals = list(final_data.values())
+for i in range(len(list_of_vals)):
+    with open(f"D:\All Coding files\RAG-Video-Model\All_JSON_chunks\{i} Audio_to_Text.json","w") as f:
+        json.dump(list_of_vals[i],f)
 
     
