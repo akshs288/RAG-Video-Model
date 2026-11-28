@@ -11,15 +11,10 @@ for i in all_json_file:
     path_file = json_folder / i
     file_path.append(path_file)
 
-id_embed = 0
 main_embeddings = {}
-
-main_number = []
-main_title= []
-main_id_embed = []
-main_embedin = []
-id_embed = []
-
+number = []
+title = []
+embedding_list = []
 for i in file_path:
     c= 1
     with open(i) as f:
@@ -27,7 +22,6 @@ for i in file_path:
         refined_file_name = i.split(".")[0].split(" ")[1]
         all_data = json.load(f)  # Fetched as List of dictionary
         for data in all_data:
-            id_embed += 1
             text_chunk = data["text"]    # Separate text 
 
             req = requests.post("http://localhost:11434/api/embeddings",json={
@@ -35,28 +29,16 @@ for i in file_path:
                 "prompt":text_chunk
             })
             final_embedding = req.json()["embedding"]
-            number = []
-            title = []
-            id_embed_list = []
-            embedding_list = []
+
             embedding_list.append(final_embedding)
             number.append(c)
             title.append(refined_file_name)
-            id_embed_list.append(id_embed)
+        c+=1
 
-            # Appending results to big list  (Means list of list)
-            main_embedin.append(final_embedding)
-            main_number.append(number)
-            main_id_embed.append(id_embed_list)
-            main_title.append(title)
 
-    c+=1
-
-main_embeddings["Number"] = main_number
-main_embeddings["Title"] = main_title
-main_embeddings["Embeddings"] = main_embedin
-main_embeddings["Id_embeddings"] = main_id_embed
-
+main_embeddings["Number"] = number
+main_embeddings["Title"] = title
+main_embeddings["Embeddings"] = embedding_list
 print(main_embeddings)
             
 
